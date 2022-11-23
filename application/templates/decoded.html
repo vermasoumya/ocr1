@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="mt-4">
+    <div class="card-body justify-content-center">
+        <form action="" method="POST">
+            {{ form.csrf_token() }}
+            <fieldset class="form-group">
+                <legend class="mb-4">Text</legend>
+                <div class="form-group">
+                    {{ form.text_field.label(class="form-control-label") }}
+                    {% if form.text_field.errors %}
+                        {{ form.text_field(class="form-control form-control-sm is-invalid") }}
+                        {% for error in form.text_field.errors %}
+                            <div class="invalid-feedback">
+                                <span>{{ error }}</span>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {{ form.text_field(class="form-control form-control-sm") }}
+                    {% endif %}
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
